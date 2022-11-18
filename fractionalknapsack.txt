@@ -1,0 +1,22 @@
+class Item:
+    def __init__(self,val,weight):
+        self.val=val
+        self.weight=weight
+
+def frakp(W,arr):
+    arr.sort(key = lambda x:(x.val/x.weight),reverse=True)
+    finalvalue= 0.0
+    for item in arr:
+        if item.weight<= W:
+            W-=item.weight
+            finalvalue+=item.val
+        else:
+            finalvalue+=item.val*W/item.weight
+
+    return finalvalue
+
+if __name__ == "__main__" :
+    W=50
+    arr=[Item(60,10),Item(100,20),Item(120,30)]
+    maxval= frakp(W,arr)
+    print(maxval)

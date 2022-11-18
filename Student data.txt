@@ -1,0 +1,20 @@
+pragma solidity 0.6.6;
+
+contract Bank{
+
+    int public balance;
+
+    function deposit(int amount) public payable {
+        balance = balance + amount;
+    }
+
+    function showBal() public view returns(int) {
+        return balance;
+    }
+
+    function withdraw(int amount) public payable{
+        require(balance > amount);
+        balance = balance - amount;
+    }
+
+}
